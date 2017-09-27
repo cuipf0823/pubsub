@@ -27,11 +27,11 @@ private:
 	void OnWriteComplete(const muduo::net::TcpConnectionPtr& con);
 	void OnUnkownMsgType(const muduo::net::TcpConnectionPtr& con, const MessagePtr& msg, muduo::Timestamp time);
 
-	//ÏûÏ¢½âÎö»Øµ÷
+	//æ¶ˆæ¯è§£æå›è°ƒ
 	void ParseProtobufMessage(const muduo::net::TcpConnectionPtr& con, const MessagePtr& msg, muduo::Timestamp time);
 
 
-	//ÏûÏ¢Ïà¹Ø´¦Àí
+	//æ¶ˆæ¯ç›¸å…³å¤„ç†
 	typedef boost::shared_ptr<pubsub::CSSubscribeTopicReq> SubTopicReqPtr;
 	typedef boost::shared_ptr<pubsub::CSPublishTopicReq> PubTopicReqPtr;
 
@@ -47,7 +47,7 @@ private:
 	ProtobufDispatcher dispatcher_;
 	ProtobufCodec codec_;
 	ConnectsList connections_;
-	//µ±Ç°Á¬½ÓÊı
+	//å½“å‰è¿æ¥æ•°
 	uint32_t numConnected_;
 	static const uint32_t kMaxConntions_ = 1000;
 	Topics topics_;

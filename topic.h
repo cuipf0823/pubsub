@@ -6,7 +6,7 @@
 namespace pub
 {
 
-//ÒòÃ»ÓĞÕËºÅµÄ¸ÅÄî£¬Ö»±£´æÔÚÏßµÇÂ¼Á¬½Ó
+//å› æ²¡æœ‰è´¦å·çš„æ¦‚å¿µï¼Œåªä¿å­˜åœ¨çº¿ç™»å½•è¿æ¥
 typedef std::set<muduo::net::TcpConnectionPtr> Subscribers;
 
 class Topic
@@ -21,13 +21,13 @@ public:
 	{
 
 	}
-	//¶©ÔÄÖ÷Ìâ
+	//è®¢é˜…ä¸»é¢˜
 	bool Subscribe(const muduo::net::TcpConnectionPtr& con);
-	//È¡Ïû¶©ÔÄ
+	//å–æ¶ˆè®¢é˜…
 	void UnSubscribe(const muduo::net::TcpConnectionPtr& con);
-	//·¢²¼
+	//å‘å¸ƒ
 	void Publish(const std::string& content, muduo::Timestamp time);
-	//»ñÈ¡È«²¿¶©ÔÄÕß
+	//è·å–å…¨éƒ¨è®¢é˜…è€…
 	const Subscribers& subscribers() const
 	{
 		return subscribers_;
@@ -44,7 +44,7 @@ private:
 	std::string topic_;
 	std::string content_;
 	Subscribers subscribers_;
-	muduo::Timestamp last_pub_time_;   //·¢²¼Ê±¼ä
+	muduo::Timestamp last_pub_time_;   //å‘å¸ƒæ—¶é—´
 };
 
 }

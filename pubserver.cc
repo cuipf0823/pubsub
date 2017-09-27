@@ -72,7 +72,7 @@ void PubServer::OnConnection(const muduo::net::TcpConnectionPtr& con)
 void PubServer::OnMessage(const muduo::net::TcpConnectionPtr& con, muduo::net::Buffer* buffer, muduo::Timestamp time)
 {
 	LOG_DEBUG << "receive msg from " << con->peerAddress().toIpPort() << " msg len :" << buffer->readableBytes();
-	//±£Ö¤ÏûÏ¢Êý¾ÝÈ«²¿½ÓÊÜÍê±Ï
+	//ä¿è¯æ¶ˆæ¯æ•°æ®å…¨éƒ¨æŽ¥å—å®Œæ¯•
 	uint32_t msg_len = 0;
 	if (buffer->readableBytes() > sizeof(uint32_t))
 	{
@@ -88,7 +88,7 @@ void PubServer::OnMessage(const muduo::net::TcpConnectionPtr& con, muduo::net::B
 		LOG_DEBUG << "buf readableBytes " << buffer->readableBytes() << " less then msg_len " << sizeof(uint32_t) << " return";
 		return;
 	}
-	//½âÎöÊÕµ½ÏûÏ¢
+	//è§£æžæ”¶åˆ°æ¶ˆæ¯
 	codec_.onMessage(con, buffer, time);
 }
 
@@ -150,12 +150,12 @@ void PubServer::PublishTopicReq(const muduo::net::TcpConnectionPtr& con, const P
 		topic->Publish(msg->content(), time);
 		topics_.insert(std::pair<std::string, Topic*>(msg->topic(), topic));
 	}
-	//»Ø¸´·¢²¼Õß
+	//å›žå¤å‘å¸ƒè€…
 	pubsub::CSPublishTopicRsp rsp;
 	rsp.set_status_code(0);
 	codec_.send(con, rsp);
 
-	//ÍÆËÍËùÓÐ¶©ÔÄÕß
+	//æŽ¨é€æ‰€æœ‰è®¢é˜…è€…
 	pubsub::CSPublishTopicNtf ntf;
 	ntf.set_topic(topic->topic());
 	ntf.set_content(topic->content());

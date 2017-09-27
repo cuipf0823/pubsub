@@ -26,11 +26,11 @@ private:
 	void OnWriteComplete(const muduo::net::TcpConnectionPtr& con);
 	void OnUnkownMsgType(const muduo::net::TcpConnectionPtr& con, const MessagePtr& msg, muduo::Timestamp time);
 
-	//消息解析回调
+	//娑堟伅瑙ｆ瀽鍥炶皟
 	void ParseProtobufMessage(const muduo::net::TcpConnectionPtr& con, const MessagePtr& msg, muduo::Timestamp time);
 	
 
-	//消息相关处理
+	//娑堟伅鐩稿叧澶勭悊
 	typedef boost::shared_ptr<pubsub::CSSubscribeTopicRsp> SubTopicRspPtr;
 	typedef boost::shared_ptr<pubsub::CSPublishTopicRsp> PubTopicRspPtr;
 	typedef boost::shared_ptr<pubsub::CSPublishTopicNtf> PubTopicNtfPtr;
@@ -39,7 +39,7 @@ private:
 	void PublishTopicRsp(const muduo::net::TcpConnectionPtr& con, const PubTopicRspPtr& msg, muduo::Timestamp time);
 	void PublishTopicNtf(const muduo::net::TcpConnectionPtr& con, const PubTopicNtfPtr& msg, muduo::Timestamp time);
 
-	//命令相关处理
+	//鍛戒护鐩稿叧澶勭悊
 	void SubscribeTopic();
 	void PublishTopic();
 private:

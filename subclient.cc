@@ -54,7 +54,7 @@ void SubClient::OnConnection(const muduo::net::TcpConnectionPtr& con)
 void SubClient::OnMessage(const muduo::net::TcpConnectionPtr& con, muduo::net::Buffer* buffer, muduo::Timestamp time)
 {
 	LOG_DEBUG << "receive msg from " << con->peerAddress().toIpPort() << " msg len :" << buffer->readableBytes();
-	//保证消息数据全部接受完毕
+	//淇濊瘉娑堟伅鏁版嵁鍏ㄩ儴鎺ュ彈瀹屾瘯
 	uint32_t msg_len = 0;
 	if (buffer->readableBytes() > sizeof(uint32_t))
 	{
@@ -70,7 +70,7 @@ void SubClient::OnMessage(const muduo::net::TcpConnectionPtr& con, muduo::net::B
 		LOG_DEBUG << "buf readableBytes " << buffer->readableBytes() << " less then msg_len " << sizeof(uint32_t) << " return";
 		return;
 	}
-	//解析收到消息
+	//瑙ｆ瀽鏀跺埌娑堟伅
 	codec_.onMessage(con, buffer, time);
 }
 
